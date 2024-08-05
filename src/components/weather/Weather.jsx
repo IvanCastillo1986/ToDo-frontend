@@ -24,10 +24,10 @@ export default function Weather() {
 
     return (
         <div className='Weather'>
-            <h2>New York City</h2>
+            <h2>Weather</h2>
+            <p>New York City</p>
 
             <div className='Weather__container'>
-
                 {forecast.length &&
                 forecast.map((weatherData) => {
                     return <WeatherCard key={weatherData.dt} weatherData={weatherData} />
