@@ -7,7 +7,7 @@ import './WeatherCard.scss'
 export default function WeatherCard({ weatherData }) {
 
 
-    console.log(weatherData)
+    // console.log(weatherData)
 
 
     return (

@@ -3,7 +3,7 @@ import './ToDo.scss'
 
 
 
-export default function ToDo() {
+export default function ToDo({ todo }) {
 
 
 
