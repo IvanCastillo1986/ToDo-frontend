@@ -1,0 +1,11 @@
+.WeatherCard {
+    display: flex;
+    flex-direction: column;
+
+    background-color: green;
+    border-radius: 10px;
+
+    span {
+        padding: 10px;
+    }
+}
