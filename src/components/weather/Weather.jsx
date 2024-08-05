@@ -8,7 +8,7 @@ import './Weather.scss'
 
 export default function Weather() {
 
-    const API = apiURL()
+    const API = apiURL('weather')
     const [forecast, setForecast] = useState([])
 
     // isolates the forecast for next 5 days in 24 hour increments from latest forecast
@@ -20,9 +20,6 @@ export default function Weather() {
         })
         .catch(err => console.log(err))
     }, [])
-
-    // Next:  place those into individual <WeatherCard /> components
-
 
 
     return (
