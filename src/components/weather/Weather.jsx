@@ -11,15 +11,37 @@ export default function Weather() {
     const API = apiURL('weather')
     const [forecast, setForecast] = useState([])
 
-    // isolates the forecast for next 5 days in 24 hour increments from latest forecast
     useEffect(() => {
         axios.get(API)
         .then(res => {
-            const list = res.data.list
-            setForecast([list[0], list[8], list[16], list[24], list[32]])
+            setForecast(separateDays(res.data.list))
         })
         .catch(err => console.log(err))
     }, [])
+
+    // separate the days and get the low and high temps for each day
+    const separateDays = (list) => {
+        // NOTE: this function can be adjusted to find low or high of any property.
+        // For now, it gives every other property of that day's "21:00:00" date time.
+        const fiveDays = []
+        let lowTemp = Infinity
+        let highTemp = -Infinity
+
+        list.forEach(weatherItem => {
+            if (weatherItem.main.temp > highTemp) highTemp = weatherItem.main.temp
+            if (weatherItem.main.temp < lowTemp) lowTemp = weatherItem.main.temp
+
+            // if it's the last 3-hour increment of the day, terminate day
+            if (weatherItem.dt_txt.split(' ')[1] === "21:00:00") {
+                weatherItem.lowHighTemps = {lowTemp, highTemp}
+                fiveDays.push(weatherItem)
+                lowTemp = Infinity
+                highTemp = -Infinity
+            }
+        })
+
+        return fiveDays
+    }
 
 
     return (
@@ -28,7 +50,7 @@ export default function Weather() {
             <p>New York City</p>
 
             <div className='Weather__container'>
-                {forecast.length &&
+                {forecast.length > 0 &&
                 forecast.map((weatherData) => {
                     return <WeatherCard key={weatherData.dt} weatherData={weatherData} />
                 })}
