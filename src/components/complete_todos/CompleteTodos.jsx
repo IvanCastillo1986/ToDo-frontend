@@ -3,17 +3,20 @@ import Todo from '../todo/Todo'
 import './CompleteTodos.scss'
 
 
-export default function CompleteToDos({ todos, updateCompletion, deleteTodo }) {
-
+export default function CompleteToDos({ completeTodos, setCompleteTodos, updateTodo }) {
 
 
     return (
         <div className='CompleteTodos'>
             <h2>Complete Todos</h2>
-            <ul className='IncompleteTodos'>
-                {todos.length &&
-                todos.map(todo => {
-                    return <Todo key={todo.id} todo={todo} updateCompletion={updateCompletion} />
+            <ul>
+                {completeTodos.length &&
+                completeTodos.map(todo => {
+                    return <Todo 
+                        key={todo.id} todo={todo} 
+                        completeTodos={completeTodos} setCompleteTodos={setCompleteTodos} 
+                        updateTodo={updateTodo}
+                    />
                 })}
             </ul>
         </div>

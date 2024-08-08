@@ -1,0 +1,16 @@
+@import './utils/_colors';
+
+.App {
+    text-align: center;
+
+    button {
+        padding: 10px;
+        background-color: $beige;
+        border: 2px solid $borderPeach;
+        border-radius: 5px;
+    }
+
+    h2 {
+        color: $darkGrayBlue;
+    }
+}

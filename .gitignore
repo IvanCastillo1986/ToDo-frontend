@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# unpushed apps
+# unpushed files
 todo.md
+unused
 
 # dependencies
 /node_modules
@@ -26,3 +27,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+
+# Local Netlify folder
+.netlify
