@@ -10,6 +10,7 @@ export default function Weather() {
 
     const API = apiURL('weather')
     const [forecast, setForecast] = useState([])
+    const dayOfWeek = ['Today', 'Tomorrow', 'Day 3', 'Day 4', 'Day 5']
 
     useEffect(() => {
         axios.get(API)
@@ -19,10 +20,10 @@ export default function Weather() {
         .catch(err => console.log(err))
     }, [])
 
-    // separate the days and get the low and high temps for each day
+    // separates the days and get the low and high temps for each day
     const separateDays = (list) => {
         // NOTE: this function can be adjusted to find low or high of any property.
-        // For now, it gives every other property of that day's "21:00:00" date time.
+        // For now, it gives every property of that day's "21:00:00" date time.
         const fiveDays = []
         let lowTemp = Infinity
         let highTemp = -Infinity
@@ -31,7 +32,7 @@ export default function Weather() {
             if (weatherItem.main.temp > highTemp) highTemp = weatherItem.main.temp
             if (weatherItem.main.temp < lowTemp) lowTemp = weatherItem.main.temp
 
-            // if it's the last 3-hour increment of the day, terminate day
+            // 21st hour is the last 3-hour increment of the day, terminate day
             if (weatherItem.dt_txt.split(' ')[1] === "21:00:00") {
                 weatherItem.lowHighTemps = {lowTemp, highTemp}
                 fiveDays.push(weatherItem)
@@ -46,13 +47,12 @@ export default function Weather() {
 
     return (
         <div className='Weather'>
-            <h2>Weather</h2>
-            <p>New York City</p>
+            <h2>New York City</h2>
 
             <div className='Weather__container'>
                 {forecast.length > 0 &&
-                forecast.map((weatherData) => {
-                    return <WeatherCard key={weatherData.dt} weatherData={weatherData} />
+                forecast.map((weatherData, idx) => {
+                    return <WeatherCard key={weatherData.dt} weatherData={weatherData} dayOfWeek={dayOfWeek[idx]} />
                 })}
             </div>
         </div>

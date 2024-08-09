@@ -2,15 +2,21 @@
 
 .App {
     text-align: center;
+    margin-bottom: 80px;
 
     button {
         padding: 10px;
         background-color: $beige;
-        border: 2px solid $borderPeach;
+        border: 2px solid $darkPeach;
         border-radius: 5px;
+    }
+    button:hover {
+        background-color: $darkPeach;
     }
 
     h2 {
         color: $darkGrayBlue;
+        font-size: 32px;
+        font-weight: bold;
     }
 }

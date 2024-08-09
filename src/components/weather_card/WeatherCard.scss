@@ -1,12 +1,22 @@
+@import '../../utils/colors';
+
 .WeatherCard {
     display: flex;
     flex-direction: column;
-    width: 18%;
+    column-gap: 10px;
+    width: 15%;
+    min-width: fit-content;
+    font-weight: bold;
 
-    background-color: green;
+    background-color: $lightGrayBlue;
     border-radius: 10px;
 
+    p {
+        font-size: 20px;
+    }
+
     span {
-        padding: 10px;
+        padding: 10px 20px;
+        text-align: left;
     }
 }

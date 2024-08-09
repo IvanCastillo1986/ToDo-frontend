@@ -1,10 +1,16 @@
+@import '../../utils/colors';
+
 .Weather {
     display: flex;
     flex-direction: column;
+    background-color: $darkPeach;
+    padding-bottom: 30px;
+    border-bottom: $lightGrayBlue 3px solid;
     
     &__container {
         display: flex;
         justify-content: space-around;
+        column-gap: 15px;
         color: white;
     }
 }

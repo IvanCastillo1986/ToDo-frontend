@@ -4,7 +4,7 @@ import './WeatherCard.scss'
 
 
 
-export default function WeatherCard({ weatherData }) {
+export default function WeatherCard({ weatherData, dayOfWeek }) {
 
 
     // console.log(weatherData)
@@ -12,6 +12,7 @@ export default function WeatherCard({ weatherData }) {
 
     return (
         <div className='WeatherCard'>
+            <p>{dayOfWeek}</p>
             <span>Low: {weatherData.lowHighTemps.lowTemp}&deg;</span>
             <span>High: {weatherData.lowHighTemps.highTemp}&deg;</span>
             <span>Pressure: {weatherData.main.pressure}</span>

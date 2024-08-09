@@ -45,7 +45,7 @@ export default function IncompleteTodos({ incompleteTodos, setIncompleteTodos, s
 
     return (
         <div className='IncompleteTodos'>
-            <div className='new-todo'>
+            <div className='IncompleteTodos__new-todo'>
                 <form onSubmit={(e) => addTodo(e, newTodo)}>
                     <input type="text" placeholder='What needs to get done?' id='todo_message' value={newTodo.todo_message} onChange={handleChange} />
                     <button type='submit'>Add Todo</button>

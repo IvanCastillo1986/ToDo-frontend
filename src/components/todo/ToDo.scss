@@ -1,8 +1,8 @@
 .Todo {
     text-align: left;
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 10px;
 
     &__checkBtn {
         grid-column: 1/2;

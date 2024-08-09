@@ -30,12 +30,7 @@ export default function Todo({ todo, incompleteTodos, setIncompleteTodos, comple
 
     return (
         <li className='Todo'>
-            {todo.complete
-                ?
-                <button className='Todo__checkBtn' onClick={() => updateTodo(todo)}>Restore</button>
-                :
-                <button className='Todo__checkBtn' onClick={() => updateTodo(todo)}>Done</button>
-            }
+            <input type="checkbox" checked={todo.complete} onChange={() => updateTodo(todo)} />
             <span className='Todo__message'>{todo.todo_message}</span>
             <button className='Todo__deleteBtn' onClick={() => deleteTodo(todo)}>Delete</button>
         </li>
