@@ -43,7 +43,7 @@ export default function TodoComponent() {
 
         axios.put(`${API}/todos/${updatedTodo.id}`, updatedTodo)
         .then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
         })
         .catch((err) => console.log(err))
     }

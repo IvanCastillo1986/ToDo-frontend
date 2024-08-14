@@ -5,15 +5,16 @@
     &__new-todo {
         margin-bottom: 30px;
     }
+    &__new-todo input {
+        width: 50%;
+    }
 
     ul {
         list-style: none;
         margin: 0;
         padding: 0;
     }
-
     input {
-        width: 50%;
         border: 2px solid $darkPeach;
         border-radius: 5px;
         padding: 10px;

@@ -10,16 +10,36 @@ export default function Weather() {
 
     const API = apiURL('weather')
     const [forecast, setForecast] = useState([])
-    const dayOfWeek = ['Today', 'Tomorrow', 'Day 3', 'Day 4', 'Day 5']
-
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const dayOfWeek = getNextFiveDays()
+    
     useEffect(() => {
-        axios.get(API)
-        .then(res => {
-            setForecast(separateDays(res.data.list))
-        })
-        .catch(err => console.log(err))
-    }, [])
+        window.addEventListener('resize', handleResize)
+        
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [window.innerWidth])
+    function handleResize() {
+        setWindowWidth(window.innerWidth)
+    }
+    
 
+    function getNextFiveDays() {
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        const nextFiveDays = []
+        let currentDay = new Date().getDay()
+        let idx = 0
+
+        while (idx < 5) {
+            nextFiveDays.push(days[currentDay % 7])
+
+            currentDay++
+            idx++
+        }
+
+        return nextFiveDays
+    }
     // separates the days and get the low and high temps for each day
     const separateDays = (list) => {
         // NOTE: this function can be adjusted to find low or high of any property.
@@ -43,6 +63,13 @@ export default function Weather() {
 
         return fiveDays
     }
+    useEffect(() => {
+        axios.get(API)
+        .then(res => {
+            setForecast(separateDays(res.data.list))
+        })
+        .catch(err => console.log(err))
+    }, [])
 
 
     return (
@@ -52,7 +79,12 @@ export default function Weather() {
             <div className='Weather__container'>
                 {forecast.length > 0 &&
                 forecast.map((weatherData, idx) => {
-                    return <WeatherCard key={weatherData.dt} weatherData={weatherData} dayOfWeek={dayOfWeek[idx]} />
+                    return <WeatherCard 
+                        key={weatherData.dt} 
+                        weatherData={weatherData} 
+                        dayOfWeek={dayOfWeek[idx]} 
+                        windowWidth={windowWidth}
+                    />
                 })}
             </div>
         </div>

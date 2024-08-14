@@ -6,7 +6,7 @@ import './IncompleteTodos.scss'
 const API = apiURL('todos')
 
 
-export default function IncompleteTodos({ incompleteTodos, setIncompleteTodos, setCompleteTodos, deleteTodo, updateTodo }) {
+export default function IncompleteTodos({ incompleteTodos, setIncompleteTodos, updateTodo }) {
 
     const [newTodo, setNewTodo] = useState({
         todo_message: '',
@@ -25,7 +25,7 @@ export default function IncompleteTodos({ incompleteTodos, setIncompleteTodos, s
         try {
             axios.post(`${API}/todos`, todo)
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
 
                 setNewTodo({
                     todo_message: '',

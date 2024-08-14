@@ -1,22 +1,107 @@
 @import '../../utils/colors';
 
+
 .WeatherCard {
     display: flex;
     flex-direction: column;
-    column-gap: 10px;
     width: 15%;
-    min-width: fit-content;
+    min-width: 150px;
     font-weight: bold;
-
     background-color: $lightGrayBlue;
     border-radius: 10px;
+    height: fit-content;
 
-    p {
+    div {
+        margin-bottom: 10px;
+    }
+    &__day-of-week {
         font-size: 20px;
     }
+    &__temps {
+        display: flex;
+        justify-content: space-around;
+    }
+    &__temps div {
+        display: flex;
+        flex-direction: column;
+    }
+    &__temps .colon {
+        display: none;
+    }
+    &__clouds {
+        display: flex;
+        text-transform: capitalize;
+        margin: auto;
+    }
+    &__pressure {
+        margin: auto;
+    }
+    &__winds {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__arrow {
+        display: none;
+    }
+}
 
-    span {
-        padding: 10px 20px;
-        text-align: left;
+
+@media only screen and (max-width: 840px) {
+    .WeatherCard {
+        min-width: 120px;
+        font-size: .8em;   
+    }
+}
+
+
+@media only screen and (max-width: 640px) {
+    .WeatherCard {
+        display: flex;
+        flex-direction: column;
+        width: 15%;
+        min-width: fit-content;
+        padding: 4px;
+        font-size: .75em;
+        font-weight: bold;
+        background-color: $lightGrayBlue;
+        border-radius: 10px;
+    
+        div {
+            margin-bottom: 5px;
+        }
+        &__day-of-week {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        &__temps {
+            display: block;
+            margin: auto;
+            flex-direction: column;
+            justify-content: center;
+        }
+        &__temps .colon {
+            display: inline-block;
+        }
+        &__temps div {
+            display: flex;
+            flex-direction: row;
+        }
+        &__clouds {
+            flex-direction: column;
+        }
+        &__pressure {
+            display: flex;
+            flex-direction: column;
+        }
+        &__winds {
+            display: none;
+        }
+        &__arrow {
+            // display: block;
+        }
+    }
+    .WeatherCard:hover {
+        cursor: pointer;
     }
 }

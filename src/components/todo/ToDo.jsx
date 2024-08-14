@@ -22,7 +22,7 @@ export default function Todo({ todo, incompleteTodos, setIncompleteTodos, comple
 
         axios.delete(`${API}/todos/${deletedTodo.id}`)
         .then(res => {
-            console.log('deletedTodo:', res.data)
+            // console.log('deletedTodo:', res.data)
         })
         .catch(err => console.log(err))
     }
@@ -30,7 +30,7 @@ export default function Todo({ todo, incompleteTodos, setIncompleteTodos, comple
 
     return (
         <li className='Todo'>
-            <input type="checkbox" checked={todo.complete} onChange={() => updateTodo(todo)} />
+            <input className='Todo__checkbox' type="checkbox" checked={todo.complete} onChange={() => updateTodo(todo)} />
             <span className='Todo__message'>{todo.todo_message}</span>
             <button className='Todo__deleteBtn' onClick={() => deleteTodo(todo)}>Delete</button>
         </li>

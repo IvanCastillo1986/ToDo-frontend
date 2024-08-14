@@ -1,5 +1,6 @@
 @import '../../utils/colors';
 
+
 .Weather {
     display: flex;
     flex-direction: column;
@@ -12,5 +13,30 @@
         justify-content: space-around;
         column-gap: 15px;
         color: white;
+    }
+}
+
+@media only screen and (max-width: 840px) {
+    .Weather {
+        &__container {
+            column-gap: 5px;
+        }
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .Weather {
+        display: flex;
+        flex-direction: column;
+        background-color: $darkPeach;
+        padding-bottom: 30px;
+        border-bottom: $lightGrayBlue 3px solid;
+        
+        &__container {
+            display: flex;
+            justify-content: space-around;
+            column-gap: 5px;
+            color: white;
+        }
     }
 }

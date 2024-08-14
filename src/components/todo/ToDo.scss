@@ -19,4 +19,11 @@
         width: 100px;
         margin: auto;
     }
+    &__checkbox {
+        width: 24px;
+        justify-self: center;
+    }
+    &__checkbox:hover {
+        cursor: pointer;
+    }
 }
