@@ -6,7 +6,7 @@ import './IncompleteTodos.scss'
 const API = apiURL('todos')
 
 
-export default function IncompleteTodos({ incompleteTodos, setIncompleteTodos, updateTodo }) {
+export default function IncompleteTodos({ incompleteTodos, setIncompleteTodos, toggleTodoComplete }) {
 
     const [newTodo, setNewTodo] = useState({
         todo_message: '',
@@ -51,12 +51,16 @@ export default function IncompleteTodos({ incompleteTodos, setIncompleteTodos, u
                     <button type='submit'>Add Todo</button>
                 </form>
             </div>
-            <ul>
-                {incompleteTodos.length &&
+            <div>
+                {incompleteTodos.length > 0 &&
                 incompleteTodos.map(todo => {
-                    return <Todo key={todo.id} todo={todo} incompleteTodos={incompleteTodos} setIncompleteTodos={setIncompleteTodos} updateTodo={updateTodo} />
+                    return <Todo key={todo.id} 
+                    todo={todo} incompleteTodos={incompleteTodos} setIncompleteTodos={setIncompleteTodos} 
+                    toggleTodoComplete={toggleTodoComplete} 
+                    handleChange={handleChange}
+                    />
                 })}
-            </ul>
+            </div>
         </div>
     )
 }

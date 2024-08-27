@@ -3,7 +3,7 @@ import Todo from '../todo/Todo'
 import './CompleteTodos.scss'
 
 
-export default function CompleteToDos({ completeTodos, setCompleteTodos, updateTodo }) {
+export default function CompleteToDos({ completeTodos, setCompleteTodos, toggleTodoComplete }) {
 
 
     return (
@@ -15,7 +15,7 @@ export default function CompleteToDos({ completeTodos, setCompleteTodos, updateT
                     return <Todo 
                         key={todo.id} todo={todo} 
                         completeTodos={completeTodos} setCompleteTodos={setCompleteTodos} 
-                        updateTodo={updateTodo}
+                        toggleTodoComplete={toggleTodoComplete}
                     />
                 })}
             </ul>

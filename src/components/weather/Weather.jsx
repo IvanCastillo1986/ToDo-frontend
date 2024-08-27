@@ -67,11 +67,12 @@ export default function Weather() {
         axios.get(API)
         .then(res => {
             setForecast(separateDays(res.data.list))
+            
         })
         .catch(err => console.log(err))
     }, [])
 
-
+    
     return (
         <div className='Weather'>
             <h2>New York City</h2>

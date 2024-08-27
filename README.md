@@ -1,7 +1,7 @@
 # Todo Web Application
 My attempt was to structure this application for re-usability and scalability.
 
-View live site at https://tiny-narwhal-1da182.netlify.app
+View live site at https://todo-app-tkh.netlify.app/
 
 
 ## User Instructions
@@ -42,3 +42,11 @@ App ->
             Todo
         CompleteTodos ->
             Todo
+
+
+## Application State/Functions
+App  -  
+TodoComponent  -  completeTodos[], incompleteTodos[], useEffect(callAPI), toggleTodoComplete()
+IncompleteTodos  -  newTodo{}, handleChange(), addTodo()
+CompleteTodos  -  
+Todo  -  deleteTodo()

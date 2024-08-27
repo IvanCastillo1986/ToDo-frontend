@@ -9,8 +9,8 @@ const API = apiURL('todos')
 
 export default function TodoComponent() {
 
-    const [completeTodos, setCompleteTodos] = useState([])
     const [incompleteTodos, setIncompleteTodos] = useState([])
+    const [completeTodos, setCompleteTodos] = useState([])
 
 
     useEffect(() => {
@@ -28,20 +28,20 @@ export default function TodoComponent() {
         }).catch(err => console.log(err))
     }, [])
 
-    const updateTodo = (updatedTodo) => {
-        if (updatedTodo.complete === true) {
-            const newCompleteArr = completeTodos.filter(todo => todo.id !== updatedTodo.id)
+    const toggleTodoComplete = (toggledTodo) => {
+        if (toggledTodo.complete === true) {
+            const newCompleteArr = completeTodos.filter(todo => todo.id !== toggledTodo.id)
             setCompleteTodos(newCompleteArr)
-            setIncompleteTodos(incompleteTodos => [...incompleteTodos, updatedTodo])
+            setIncompleteTodos(incompleteTodos => [...incompleteTodos, toggledTodo])
         } else {
-            const newIncompleteArr = incompleteTodos.filter(todo => todo.id !== updatedTodo.id)
+            const newIncompleteArr = incompleteTodos.filter(todo => todo.id !== toggledTodo.id)
             setIncompleteTodos(newIncompleteArr)
-            setCompleteTodos(completeTodos => [...completeTodos, updatedTodo])
+            setCompleteTodos(completeTodos => [...completeTodos, toggledTodo])
         }
 
-        updatedTodo.complete = !updatedTodo.complete
+        toggledTodo.complete = !toggledTodo.complete
 
-        axios.put(`${API}/todos/${updatedTodo.id}`, updatedTodo)
+        axios.put(`${API}/todos/${toggledTodo.id}`, toggledTodo)
         .then((res) => {
             // console.log(res.data)
         })
@@ -52,18 +52,16 @@ export default function TodoComponent() {
     return (
         <div className='TodoComponent'>
             <h2>Your Todos</h2>
-            {incompleteTodos.length > 0 &&
             <IncompleteTodos 
                 incompleteTodos={incompleteTodos} setIncompleteTodos={setIncompleteTodos} 
                 setCompleteTodos={setCompleteTodos}
-                updateTodo={updateTodo}
+                toggleTodoComplete={toggleTodoComplete}
             />
-            }
 
             {completeTodos.length > 0 &&
                 <CompleteTodos 
                     completeTodos={completeTodos} setCompleteTodos={setCompleteTodos} 
-                    updateTodo={updateTodo}
+                    toggleTodoComplete={toggleTodoComplete}
                 />
             }
         </div>
