@@ -14,7 +14,7 @@
         grid-column: 2/3;
     }
 
-    button {
+    &__deleteBtn {
         grid-column: 3/4;
         width: 100px;
         margin: auto;
@@ -25,5 +25,17 @@
     }
     &__checkbox:hover {
         cursor: pointer;
+    }
+    
+    // <TodoForm />
+    form {
+        grid-column: 2/4;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    &__updateBtn {
+        grid-column: 2/3;
+        width: 100px;
+        margin: auto;
     }
 }

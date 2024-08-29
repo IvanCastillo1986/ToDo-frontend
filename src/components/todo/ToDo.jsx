@@ -8,7 +8,7 @@ const API = apiURL('todos')
 
 
 export default function Todo({ 
-    todo, incompleteTodos, setIncompleteTodos, completeTodos, setCompleteTodos, toggleTodoComplete, handleChange
+    todo, incompleteTodos, setIncompleteTodos, completeTodos, setCompleteTodos, toggleTodoComplete
 }) {
 
     const [editId, setEditId] = useState(null)
@@ -47,9 +47,9 @@ export default function Todo({
                 {/* <input type="text" id='todo_message' value={updatedTodo.todo_message} onChange={handleUpdateChange} />
                 <button className='Todo__updateBtn' onClick={() => handleUpdate(updatedTodo)}>Update</button> */}
                 <TodoForm 
-                    todo={todo}
-                    incompleteTodos={incompleteTodos} toggleEditForm={toggleEditForm} 
-                    setCompleteTodos={setCompleteTodos} setIncompleteTodos={setIncompleteTodos}
+                    method={'put'} updatedTodo={todo}
+                    incompleteTodos={incompleteTodos} setIncompleteTodos={setIncompleteTodos}
+                    toggleEditForm={toggleEditForm} 
                 />
             </>
             :
