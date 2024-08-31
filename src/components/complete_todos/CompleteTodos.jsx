@@ -13,7 +13,7 @@ export default function CompleteToDos({ completeTodos, setCompleteTodos, toggleT
                 {completeTodos.length &&
                 completeTodos.map(todo => {
                     return <Todo 
-                        key={todo.id} todo={todo} 
+                        key={todo.id} todo={todo} updatedTodo={null}
                         completeTodos={completeTodos} setCompleteTodos={setCompleteTodos} 
                         toggleTodoComplete={toggleTodoComplete}
                     />

@@ -34,14 +34,16 @@ export default function Todo({
 
 
     const toggleEditForm = (id) => {
-        // will toggle the two elements, the <div><input><update_btn> and <div><span><delete_btn>
-        id ? setEditId(todo.id) : setEditId(null)
+        // will toggle the two elements onClick, between todo message and todo form
+        if (!todo.complete) {
+            id ? setEditId(todo.id) : setEditId(null)
+        }
     }
     
 
     return (
         <div className='Todo'>
-            { editId === todo.id 
+            { editId === todo.id // this means we've clicked to toggle TodoForm
             ?
             <>
                 {/* <input type="text" id='todo_message' value={updatedTodo.todo_message} onChange={handleUpdateChange} />

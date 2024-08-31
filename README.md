@@ -39,9 +39,10 @@ BEM
 App ->
     TodoComponent ->
         IncompleteTodos ->
-            Todo
+            TodoForm
+            Todo -> TodoForm
         CompleteTodos ->
-            Todo
+            Todo -> TodoForm
 
 
 ## Application State/Functions

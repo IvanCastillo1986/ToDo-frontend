@@ -10,13 +10,13 @@ const API = apiURL('todos')
 
 export default function TodoForm({ updatedTodo, toggleEditForm, incompleteTodos, setIncompleteTodos, method }) {
 
-    const [formTodo, setFormTodo] = useState((updatedTodo) => {
+    const [formTodo, setFormTodo] = useState(() => {
         return (
-        updatedTodo == null
+            updatedTodo == null
         ?
-        {todo_message: '', complete: false}
+            {todo_message: '', complete: false}
         :
-        updatedTodo
+            updatedTodo
         )
     })
 
@@ -41,14 +41,17 @@ export default function TodoForm({ updatedTodo, toggleEditForm, incompleteTodos,
         // replace updatedTodo with res.data, then setIncompleteTodos with updatedTodo in place within array
         const todoIdx = updatedTodosList.findIndex(arrTodo => arrTodo.id === formTodo.id)
 
-        axios.put(`${API}/todos/${formTodo.id}`, formTodo)
-        .then((res) => {
-            // console.log(res.data)
-            updatedTodosList[todoIdx] = res.data
 
-            setIncompleteTodos([...updatedTodosList])
-        }).catch(err => console.log(err))
-
+        if (updatedTodo.todo_message !== formTodo.todo_message) {
+            axios.put(`${API}/todos/${formTodo.id}`, formTodo)
+            .then((res) => {
+                // console.log(res.data)
+                updatedTodosList[todoIdx] = res.data
+                
+                setIncompleteTodos([...updatedTodosList])
+            }).catch(err => console.log(err))
+        }
+            
         toggleEditForm()
     }
 
